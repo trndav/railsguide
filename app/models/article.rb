@@ -1,11 +1,7 @@
 class Article < ApplicationRecord
-    has_many :comments
+    include Visible
+
+    has_many :comments, dependent: :destroy
     validates :title, presence: true, length: {minimum: 3}
     validates :body, presence: true, length: {minimum: 10}
-
-    VALID_STATUSES = ['public', 'private', 'archived']
-    validates :status, inclusion: { in: VALID_STATUSES }  
-    def archived?
-      status == 'archived'
-    end
 end
