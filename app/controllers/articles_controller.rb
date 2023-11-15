@@ -34,7 +34,6 @@ class ArticlesController < ApplicationController
     #see_other indicates that the redirects don't link to the requested resource itself, but to another page
     redirect_to root_path, status: :see_other
   end
-  private
   def article_params
     params.require(:article).permit(:title, :body, :status)
   end
